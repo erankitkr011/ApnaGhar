@@ -1,0 +1,2 @@
+{ name: 'Ankit', email: 'abc@abc', password: '123', role: 'admin' }
+{ name: 'chotu', email: 'chotu@abc', password: '1234', role: 'renter' }
