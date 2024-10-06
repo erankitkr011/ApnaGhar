@@ -7,6 +7,11 @@ const {allocateRoom} = require('../controllers/AllocateRoom')
 const {getAllRoomDetails} = require('../controllers/AllDetails')
 const {createBill} = require('../controllers/Bill')
 const {updateBill} = require('../controllers/updateBill')
+const {updateUser} = require("../controllers/updateRenterData")
+const {getUserDetails} = require('../userControllers/getUserDetails')
+const {checkUser} = require('../config/Authorization')
+const {getHomeDetails} = require('../userControllers/getHomeDetails')
+const { AllNotification, getAllNotification } = require('../controllers/Notification');
 
 
 Router.post('/signup',Signup);
@@ -16,5 +21,11 @@ Router.post('/allocateroom',allocateRoom)
 Router.get('/alldetails/:id', getAllRoomDetails); 
 Router.post('/bills',createBill)
 Router.put('/bills/:id', updateBill);
+Router.put('/users/:id',updateUser);
+Router.get('/getuser',checkUser,getUserDetails)
+Router.get('/gethomedetails',checkUser,getHomeDetails)
+Router.post('/allnotification',AllNotification)
+Router.get('/notifications', getAllNotification);
+
 
 module.exports = {Router}

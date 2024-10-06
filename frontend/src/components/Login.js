@@ -12,6 +12,7 @@ const Login = () => {
       const response = await axios.post('http://localhost:3000/login', { email, password });
       if (response.data) {
         localStorage.setItem('userDetails', JSON.stringify(response.data));
+        localStorage.setItem('token', response.data.token);
         if (response.data.user.role === "admin") {
           navigate("/admin");
         } else {
@@ -24,10 +25,15 @@ const Login = () => {
   };
 
   return (
-    <div className="flex h-screen">
-      {/* Left Side - Login Form */}
-      <div className="w-full md:w-1/2 flex items-center justify-center">
-        <div className="bg-white/30 backdrop-blur-md border border-gray-200 rounded-lg shadow-lg p-8 w-96">
+    <div className="flex flex-col md:flex-row h-screen bg-indigo-950">
+      {/* Left Side - Welcome Text */}
+      <div className="w-full md:w-1/2 flex flex-col items-center justify-center p-8 text-white">
+        <h1 className="text-4xl font-bold mb-4 text-center">Welcome to Dulari Bhawan!</h1>
+      </div>
+
+      {/* Right Side - Login Form */}
+      <div className="w-full md:w-1/2 flex items-center justify-center sm:rounded-2xl">
+        <div className="bg-white rounded-lg shadow-lg p-8 w-96">
           <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
           <div className="mb-4">
             <label className="block mb-1">Email:</label>
@@ -57,12 +63,6 @@ const Login = () => {
             Login
           </button>
         </div>
-      </div>
-
-      {/* Right Side - Image or Graphic */}
-      <div className="hidden md:block w-1/2 bg-cover bg-center" style={{ backgroundImage: 'url(/path/to/your/image.jpg)' }}>
-        {/* You can also add a gradient overlay if desired */}
-        <div className="bg-black opacity-25 h-full"></div>
       </div>
     </div>
   );
