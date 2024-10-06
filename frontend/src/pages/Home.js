@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import UserHomeDetails from "../userComponents/UserHomeDetails";
 import GetAllNotify from "../userComponents/GetAllNotify";
+import Footer from "./Footer";
 
 const Home = () => {
   const [user, setUser] = useState(null);
@@ -110,6 +111,9 @@ const Home = () => {
       </div>
 
       <UserHomeDetails />
+      <div className=" mt-10">
+      <Footer/>
+      </div>
     </div>
   );
 };

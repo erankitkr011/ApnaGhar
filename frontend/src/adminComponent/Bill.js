@@ -8,6 +8,7 @@ const CreateBill = () => {
   const [electricBillRate, setElectricBillRate] = useState(7);
   const [totalBill, setTotalBill] = useState(0);
   const [isPaid, setIsPaid] = useState(false);
+  const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
@@ -20,9 +21,16 @@ const CreateBill = () => {
         electric_bill_units: electricBillUnits,
         electric_bill_rate: electricBillRate,
         total_bill: totalBill,
-        is_paid: isPaid
+        is_paid: isPaid,
+        email
       });
+
+      const { rentPrice, message} = response.data;
+      const calculatedTotalBill = rentPrice + (electricBillUnits * electricBillRate);
+      
+      setTotalBill(calculatedTotalBill);
       setMessage(response.data.message);
+      console.log(response.data)
       setError('');
     } catch (err) {
       setError(err.response.data.error);
@@ -75,11 +83,21 @@ const CreateBill = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Total Bill:</label>
+          <label className="block text-sm font-medium text-gray-700">Total Bill (Rent + Electric Charges):</label>
           <input
             type="number"
             value={totalBill}
             onChange={(e) => setTotalBill(e.target.value)}
+            required
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-indigo-500 focus:ring-indigo-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-indigo-500 focus:ring-indigo-500"
           />
@@ -93,6 +111,7 @@ const CreateBill = () => {
           />
           <label className="ml-2 block text-sm font-medium text-gray-700">Is Paid</label>
         </div>
+        
         <button
           type="submit"
           className="w-full bg-indigo-600 text-white font-bold py-2 rounded-md hover:bg-indigo-700 transition duration-200"

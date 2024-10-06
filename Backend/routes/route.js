@@ -12,6 +12,7 @@ const {getUserDetails} = require('../userControllers/getUserDetails')
 const {checkUser} = require('../config/Authorization')
 const {getHomeDetails} = require('../userControllers/getHomeDetails')
 const { AllNotification, getAllNotification } = require('../controllers/Notification');
+const {deleteRenter,deleteRoom,deleteBill} = require('../controllers/Delete');
 
 
 Router.post('/signup',Signup);
@@ -26,6 +27,9 @@ Router.get('/getuser',checkUser,getUserDetails)
 Router.get('/gethomedetails',checkUser,getHomeDetails)
 Router.post('/allnotification',AllNotification)
 Router.get('/notifications', getAllNotification);
+Router.delete('/renter/:id', deleteRenter);
+Router.delete('/room/:id', deleteRoom);
+Router.delete('/bill/:id', deleteBill);
 
 
 module.exports = {Router}
