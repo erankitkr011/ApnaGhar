@@ -1,25 +1,76 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast, Flip } from "react-toastify";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  
+
   const handleSubmit = async () => {
+    if (!email || !password) {
+      toast.error('Email and Password cannot be empty!', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Flip,
+      });
+      return;
+    }
     try {
-      const response = await axios.post('http://localhost:3000/login', { email, password });
+      const response = await axios.post("http://localhost:3000/login", {
+        email,
+        password,
+      });
       if (response.data) {
-        localStorage.setItem('userDetails', JSON.stringify(response.data));
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem("userDetails", JSON.stringify(response.data));
+        localStorage.setItem("token", response.data.token);
         if (response.data.user.role === "admin") {
+          toast.success("Login successful as Admin!", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Flip,
+          });
           navigate("/admin");
         } else {
+          toast.success("Login successful as Renter!", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Flip,
+          });
           navigate("/");
         }
       }
     } catch (err) {
+      toast.error("Invalid credentials. Please try again!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Flip,
+      });
       console.log(err);
     }
   };
@@ -28,7 +79,9 @@ const Login = () => {
     <div className="flex flex-col md:flex-row h-screen bg-indigo-950">
       {/* Left Side - Welcome Text */}
       <div className="w-full md:w-1/2 flex flex-col items-center justify-center p-8 text-white">
-        <h1 className="text-4xl font-bold mb-4 text-center">Welcome to Dulari Bhawan!</h1>
+        <h1 className="text-4xl font-bold mb-4 text-center">
+          Welcome to Dulari Bhawan!
+        </h1>
       </div>
 
       {/* Right Side - Login Form */}
@@ -55,9 +108,9 @@ const Login = () => {
               required
             />
           </div>
-          <button 
-            type="submit" 
-            onClick={handleSubmit} 
+          <button
+            type="submit"
+            onClick={handleSubmit}
             className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-200"
           >
             Login

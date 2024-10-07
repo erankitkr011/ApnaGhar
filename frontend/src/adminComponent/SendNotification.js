@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SendNotification = () => {
   const [message, setMessage] = useState('');
 
   const handleSend = async () => {
     if (!message) {
-      alert("Notification message can't be empty");
+      toast.error("Notification message can't be empty");
       return;
     }
 
@@ -20,14 +22,14 @@ const SendNotification = () => {
       });
 
       if (response.ok) {
-        alert('Notification sent successfully!');
+        toast.success('Notification sent successfully!');
         setMessage('');
       } else {
-        alert('Failed to send notification');
+        toast.error('Failed to send notification');
       }
     } catch (error) {
       console.error('Error sending notification:', error);
-      alert('Error occurred while sending notification');
+      toast.error('Error occurred while sending notification');
     }
   };
 

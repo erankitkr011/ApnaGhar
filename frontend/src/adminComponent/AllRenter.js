@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { FaTrash } from 'react-icons/fa'; // Import delete icon from react-icons
+import { FaTrash } from 'react-icons/fa';
+import { toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AllRenter = () => {
   const [renters, setRenters] = useState([]);
@@ -33,46 +35,56 @@ const AllRenter = () => {
   };
 
   const deleteRenter = async (id) => {
-    try {
-      await axios.delete(`http://localhost:3000/renter/${id}`);
-      setRenters(renters.filter(renter => renter._id !== id));
-      setSelectedRenter(null); // Clear selected renter if deleted
-    } catch (error) {
-      console.error("Error deleting renter:", error);
+    if (window.confirm("Are you sure you want to delete this renter?")) {
+      try {
+        await axios.delete(`http://localhost:3000/renter/${id}`);
+        setRenters(renters.filter((renter) => renter._id !== id));
+        setSelectedRenter(null);
+        toast.success("Renter deleted successfully!");
+      } catch (error) {
+        toast.error("Error deleting renter!");
+        console.error("Error deleting renter:", error);
+      }
     }
   };
 
   const deleteRoom = async (roomId) => {
-    try {
-      await axios.delete(`http://localhost:3000/room/${roomId}`);
-      // Update selected renter's rooms after deletion
-      if (selectedRenter) {
-        setSelectedRenter(prev => ({
-          ...prev,
-          rooms: prev.rooms.filter(room => room._id !== roomId),
-        }));
+    if(window.confirm("Are you sure you want to delete this room?")){
+      try {
+        await axios.delete(`http://localhost:3000/room/${roomId}`);
+        if (selectedRenter) {
+          setSelectedRenter(prev => ({
+            ...prev,
+            rooms: prev.rooms.filter(room => room._id !== roomId),
+          }));
+        }
+        toast.success("Room deleted successfully!");
+      } catch (error) {
+        toast.error("Error deleting room!");
+        console.error("Error deleting room:", error);
       }
-    } catch (error) {
-      console.error("Error deleting room:", error);
     }
   };
 
   const deleteBill = async (roomId, billId) => {
-    try {
-      await axios.delete(`http://localhost:3000/bill/${billId}`);
-      // Update selected room's bills after deletion
-      if (selectedRenter) {
-        setSelectedRenter(prev => ({
-          ...prev,
-          rooms: prev.rooms.map(room => 
-            room._id === roomId
-              ? { ...room, bills: room.bills.filter(bill => bill._id !== billId) }
-              : room
-          ),
-        }));
+    if(window.confirm("Are you sure you want to delete this bill?")){
+      try {
+        await axios.delete(`http://localhost:3000/bill/${billId}`);
+        if (selectedRenter) {
+          setSelectedRenter(prev => ({
+            ...prev,
+            rooms: prev.rooms.map(room => 
+              room._id === roomId
+                ? { ...room, bills: room.bills.filter(bill => bill._id !== billId) }
+                : room
+            ),
+          }));
+        }
+        toast.success("Bill deleted successfully!");
+      } catch (error) {
+        toast.error("Error deleting bill!");
+        console.error("Error deleting bill:", error);
       }
-    } catch (error) {
-      console.error("Error deleting bill:", error);
     }
   };
 
