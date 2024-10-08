@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 const UserHomeDetails = () => {
   const [homes, setHomes] = useState([]);
   const [error, setError] = useState('');
   const [billsToShow, setBillsToShow] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchHomeDetails = async () => {
@@ -31,8 +33,11 @@ const UserHomeDetails = () => {
     fetchHomeDetails();
   }, []);
 
-  const handlePayNow = (billId) => {
+  const handlePayNow = (billId,totalBill) => {
     console.log(`Paying for bill ID: ${billId}`);
+    console.log(totalBill);
+    // navigate('/paytm', { state: { billId, totalAmount: totalBill } });
+    navigate('/razorpay', { state: { billId, totalAmount: totalBill } });
   };
 
   const loadMoreBills = () => {
@@ -73,7 +78,7 @@ const UserHomeDetails = () => {
                   <p className="text-green-500"><strong>Paid:</strong> Yes</p>
                 ) : (
                   <button
-                    onClick={() => handlePayNow(bill._id)}
+                    onClick={() => handlePayNow(bill._id,bill.total_bill)}
                     className="mt-2 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition duration-300"
                   >
                     Pay Now

@@ -5,7 +5,7 @@ const {Signup,Login} = require('../controllers/Auth')
 const {getAllRenters} = require('../controllers/AllRenter')
 const {allocateRoom} = require('../controllers/AllocateRoom')
 const {getAllRoomDetails} = require('../controllers/AllDetails')
-const {createBill} = require('../controllers/Bill')
+const {createBill,billUpdate} = require('../controllers/Bill')
 const {updateBill} = require('../controllers/updateBill')
 const {updateUser} = require("../controllers/updateRenterData")
 const {getUserDetails} = require('../userControllers/getUserDetails')
@@ -13,7 +13,9 @@ const {checkUser} = require('../config/Authorization')
 const {getHomeDetails} = require('../userControllers/getHomeDetails')
 const { AllNotification, getAllNotification } = require('../controllers/Notification');
 const {deleteRenter,deleteRoom,deleteBill} = require('../controllers/Delete');
-
+const { createOrder } = require('../controllers/razorpay');
+const { BillRecipt } = require('../controllers/BillReceipt');
+const {getReceipt} = require('../userControllers/getReceipt')
 
 Router.post('/signup',Signup);
 Router.post('/login',Login);
@@ -30,6 +32,9 @@ Router.get('/notifications', getAllNotification);
 Router.delete('/renter/:id', deleteRenter);
 Router.delete('/room/:id', deleteRoom);
 Router.delete('/bill/:id', deleteBill);
-
+Router.post('/orders', createOrder);
+Router.put('/update/:billID',billUpdate)
+Router.post('/receipt',checkUser,BillRecipt)
+Router.get('/getreceipts', checkUser, getReceipt);
 
 module.exports = {Router}

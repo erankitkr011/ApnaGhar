@@ -109,6 +109,29 @@ const createBill = async (req, res) => {
 }
 };
 
+const billUpdate = async(req,res)=>{
+  const { billID } = req.params;
+  const { is_paid } = req.body;
+
+  try {
+    const updatedBill = await Bill.findByIdAndUpdate(
+      billID,
+      { is_paid },
+      { new: true }
+    );
+
+    if (!updatedBill) {
+      return res.status(404).json({ message: 'Bill not found' });
+    }
+
+    res.status(200).json(updatedBill);
+  } catch (error) {
+    console.error('Error updating bill:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+}
+
+
 module.exports = {
-  createBill,
+  createBill,billUpdate
 };

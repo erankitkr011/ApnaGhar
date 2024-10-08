@@ -1,9 +1,11 @@
 import React from 'react'
-
+import Profile from './Profile'
+import BillReceipt from './BillReceipt'
 const PaymentHis = () => {
   return (
-    <div>
-      payment
+    <div className=' mt-10'>
+    <Profile/>
+    <BillReceipt/>
     </div>
   )
 }
