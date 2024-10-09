@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
+import React from "react";
+
 import UserHomeDetails from "../userComponents/UserHomeDetails";
 import Profile from "../userComponents/Profile";
 import Footer from "./Footer";

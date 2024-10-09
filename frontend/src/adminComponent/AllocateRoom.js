@@ -24,9 +24,9 @@ const AllocateRoom = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white shadow-md rounded">
-      <h2 className="text-2xl font-bold mb-4">Allocate Room</h2>
-      {message && <p className="mb-4 text-green-600">{message}</p>}
+    <div className="max-w-sm mx-auto p-4 sm:p-6 bg-white shadow-md rounded">
+      <h2 className="text-xl font-bold mb-4 text-center">Allocate Room</h2>
+      {message && <p className="mb-4 text-green-600 text-center">{message}</p>}
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block mb-1">User ID:</label>

@@ -49,7 +49,7 @@ const UserHomeDetails = () => {
   }
 
   if (homes.length === 0) {
-    return <p className="text-center text-gray-500">Loading...</p>;
+    return <p className="text-center text-white mt-10 text-2xl">No Room Allocated YET..</p>;
   }
 
   return (

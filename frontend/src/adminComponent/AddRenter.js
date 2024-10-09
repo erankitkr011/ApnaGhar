@@ -28,13 +28,13 @@ const AddRenter = () => {
   };
 
   return (
-    <div className="flex h-screen justify-center items-center bg-gray-100">
-      <div className="bg-white/30 backdrop-blur-md border border-gray-200 rounded-lg shadow-lg p-8 w-96">
-        <h2 className="text-2xl font-bold mb-6 text-center">Add Renter</h2>
+    <div className="flex h-screen justify-center items-center bg-gray-100 p-4">
+      <div className="bg-white/30 backdrop-blur-md border border-gray-200 rounded-lg shadow-lg p-6 w-full max-w-sm">
+        <h2 className="text-xl font-bold mb-4 text-center">Add Renter</h2>
         {message && <p className="text-center mb-4 text-green-600">{message}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block mb-1">Name:</label>
+            <label className="block mb-1 text-sm">Name:</label>
             <input
               type="text"
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -44,7 +44,7 @@ const AddRenter = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-1">Email:</label>
+            <label className="block mb-1 text-sm">Email:</label>
             <input
               type="email"
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -54,7 +54,7 @@ const AddRenter = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-1">Password:</label>
+            <label className="block mb-1 text-sm">Password:</label>
             <input
               type="password"
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -64,7 +64,7 @@ const AddRenter = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-1">Role:</label>
+            <label className="block mb-1 text-sm">Role:</label>
             <select
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={role}

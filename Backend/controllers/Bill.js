@@ -77,7 +77,7 @@ const createBill = async (req, res) => {
             },
             {
               description: "Total Bill",
-              amount: total_bill,
+              amount: calculatedTotalBill,
             },
             {
               description: "Payment Status",

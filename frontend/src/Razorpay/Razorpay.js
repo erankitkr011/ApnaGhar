@@ -1,28 +1,32 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const RazorpayComponent = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { billId, totalAmount } = location.state || {};
-//   console.log(totalAmount);
 
   const [email, setEmail] = useState('');
   const [paymentStatus, setPaymentStatus] = useState('');
   const [orderId, setOrderId] = useState('');
-  const[paymentId,setPaymentId]  = useState('')
+  const [paymentId, setPaymentId] = useState('');
+  const [loading, setLoading] = useState(false); // New loading state
 
   const createRazorpayOrder = async (amount) => {
     try {
+      setLoading(true); // Set loading to true when starting the order creation
       const { data } = await axios.post('http://localhost:3000/orders', {
         amount,
         currency: 'INR',
       });
-      console.log(amount);
       setOrderId(data);
-      handleRazorpayScreen(data.id, amount*100);
+      handleRazorpayScreen(data.id, amount * 100);
     } catch (error) {
       console.error('Error creating Razorpay order:', error);
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
 
@@ -43,9 +47,8 @@ const RazorpayComponent = () => {
       image: 'https://dularibhawan.com/demo.png',
       order_id: orderId,
       handler: (response) => {
-        console.log(response)
         setPaymentStatus(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
-        setPaymentId(response.razorpay_payment_id)
+        setPaymentId(response.razorpay_payment_id);
       },
       prefill: {
         name: 'Ankit Kumar',
@@ -75,38 +78,37 @@ const RazorpayComponent = () => {
   useEffect(() => {
     const updateBillStatus = async () => {
       try {
-        const response = await axios.put(`http://localhost:3000/update/${billId}`, {
+        await axios.put(`http://localhost:3000/update/${billId}`, {
           is_paid: true,
         });
-        console.log('Update successful:', response.data);
       } catch (error) {
         console.error('Error updating bill:', error);
       }
     };
 
     const Receipt = async () => {
-        const token = localStorage.getItem('token');
-        try {
-            const response = await axios.post('http://localhost:3000/receipt', {
-                billId,
-                paymentId,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            console.log('Receipt response:', response.data);
-        } catch (error) {
-            console.error('Error creating receipt:', error);
-        }
+      const token = localStorage.getItem('token');
+      try {
+        await axios.post('http://localhost:3000/receipt', {
+          billId,
+          paymentId,
+        }, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+      } catch (error) {
+        console.error('Error creating receipt:', error);
+      }
     };
-    
 
     if (paymentStatus) {
-       updateBillStatus();
-       Receipt();
+      updateBillStatus();
+      toast.success("Payment sucessfull")
+      Receipt();
     }
-  }, [paymentStatus, billId]);
+  }, [paymentStatus, billId, paymentId]);
 
   return (
     <div className="container mx-auto mt-10 p-6 bg-indigo-200 rounded-lg shadow-lg">
@@ -132,13 +134,14 @@ const RazorpayComponent = () => {
           />
         </div>
         <button
-          className="w-full bg-blue-600 text-white px-4 py-2 rounded-md"
+          className={`w-full ${loading ? 'bg-gray-400' : 'bg-blue-600'} text-white px-4 py-2 rounded-md`}
           onClick={() => createRazorpayOrder(totalAmount)}
+          disabled={loading} // Disable button when loading
         >
-          Pay Now
+          {loading ? 'Processing...' : 'Pay Now'}
         </button>
       </form>
-      {paymentStatus && <p className="mt-4 text-lg">{paymentStatus}</p>}
+      {paymentStatus && navigate('/payment-history')}
     </div>
   );
 };
