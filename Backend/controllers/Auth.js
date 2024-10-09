@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const USER = require('../models/user');
+const {sendmail} = require('./sendmail')
 
 // Secret key for JWT
 const JWT_SECRET = 'ehgjfdjh1234';
@@ -28,8 +29,12 @@ const Signup = async (req, res) => {
 
         });
 
+        if(newUser){
+            sendmail(newUser.email,password,name)
+        }
         // Save the user to the database
         await newUser.save();
+
         return res.status(201).json({
             message: "User successfully created and saved to the user database",
             data: newUser

@@ -110,6 +110,18 @@ const RazorpayComponent = () => {
     }
   }, [paymentStatus, billId, paymentId]);
 
+  const sendSucessMail=async()=>{
+    try {
+      await axios.post('http://localhost:3000/sendmail', {
+        billId,
+        email
+      });
+      
+    } catch (error) {
+      console.log(error)
+    } 
+}
+
   return (
     <div className="container mx-auto mt-10 p-6 bg-indigo-200 rounded-lg shadow-lg">
       <h2 className="text-4xl font-semibold mb-6">Pay Now</h2>
@@ -141,7 +153,7 @@ const RazorpayComponent = () => {
           {loading ? 'Processing...' : 'Pay Now'}
         </button>
       </form>
-      {paymentStatus && navigate('/payment-history')}
+      {paymentStatus && sendSucessMail() && navigate('/payment-history')}
     </div>
   );
 };

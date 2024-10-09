@@ -16,6 +16,7 @@ const {deleteRenter,deleteRoom,deleteBill} = require('../controllers/Delete');
 const { createOrder } = require('../controllers/razorpay');
 const { BillRecipt } = require('../controllers/BillReceipt');
 const {getReceipt} = require('../userControllers/getReceipt')
+const {SendSucessMail} = require('../controllers/sendSucessmail')
 
 Router.post('/signup',Signup);
 Router.post('/login',Login);
@@ -36,5 +37,6 @@ Router.post('/orders', createOrder);
 Router.put('/update/:billID',billUpdate)
 Router.post('/receipt',checkUser,BillRecipt)
 Router.get('/getreceipts', checkUser, getReceipt);
+Router.post('/sendmail',SendSucessMail)
 
 module.exports = {Router}

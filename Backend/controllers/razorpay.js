@@ -7,7 +7,7 @@ const razorpayInstance = new Razorpay({
 
 exports.createOrder = async (req, res) => {
     const { amount, currency } = req.body;
-   console.log(amount,currency)
+   //console.log(amount,currency)
     try {
         const options = {
             amount: amount * 100,
