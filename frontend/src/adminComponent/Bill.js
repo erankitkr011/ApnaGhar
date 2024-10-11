@@ -15,7 +15,7 @@ const CreateBill = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/bills', {
+      const response = await axios.post('http://localhost:4000/bills', {
         homeId,
         month,
         electric_bill_units: electricBillUnits,

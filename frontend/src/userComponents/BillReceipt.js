@@ -15,7 +15,7 @@ const BillReceipt = () => {
       }
 
       try {
-        const response = await axios.get("http://localhost:3000/getreceipts", {
+        const response = await axios.get("http://localhost:4000/getreceipts", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

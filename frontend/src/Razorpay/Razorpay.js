@@ -17,7 +17,7 @@ const RazorpayComponent = () => {
   const createRazorpayOrder = async (amount) => {
     try {
       setLoading(true); // Set loading to true when starting the order creation
-      const { data } = await axios.post('http://localhost:3000/orders', {
+      const { data } = await axios.post('http://localhost:4000/orders', {
         amount,
         currency: 'INR',
       });
@@ -78,7 +78,7 @@ const RazorpayComponent = () => {
   useEffect(() => {
     const updateBillStatus = async () => {
       try {
-        await axios.put(`http://localhost:3000/update/${billId}`, {
+        await axios.put(`http://localhost:4000/update/${billId}`, {
           is_paid: true,
         });
       } catch (error) {
@@ -89,7 +89,7 @@ const RazorpayComponent = () => {
     const Receipt = async () => {
       const token = localStorage.getItem('token');
       try {
-        await axios.post('http://localhost:3000/receipt', {
+        await axios.post('http://localhost:4000/receipt', {
           billId,
           paymentId,
         }, {
@@ -112,7 +112,7 @@ const RazorpayComponent = () => {
 
   const sendSucessMail=async()=>{
     try {
-      await axios.post('http://localhost:3000/sendmail', {
+      await axios.post('http://localhost:4000/sendmail', {
         billId,
         email
       });

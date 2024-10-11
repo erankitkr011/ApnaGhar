@@ -1,10 +1,11 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const USER = require('../models/user');
-const {sendmail} = require('./sendmail')
+const {sendmail} = require('./sendmail');
+require('dotenv').config();
 
 // Secret key for JWT
-const JWT_SECRET = 'ehgjfdjh1234';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const Signup = async (req, res) => {
     try {

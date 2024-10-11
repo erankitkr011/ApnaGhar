@@ -11,7 +11,7 @@ const AllocateRoom = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/allocateroom', {
+      const response = await axios.post('http://localhost:4000/allocateroom', {
         userId,
         room_type: roomType,
         room_number: roomNumber,

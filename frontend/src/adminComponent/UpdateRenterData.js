@@ -22,7 +22,7 @@ const UpdateRenterData = () => {
     };
 
     try {
-      const response = await axios.put(`http://localhost:3000/users/${userId}`, updatedData);
+      const response = await axios.put(`http://localhost:4000/users/${userId}`, updatedData);
       setMessage(response.data.message);
       setError('');
       // Optionally, you can clear the form after successful update

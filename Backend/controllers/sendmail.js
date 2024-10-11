@@ -1,13 +1,18 @@
 const nodemailer = require("nodemailer");
 const Mailgen = require('mailgen');
 
+require('dotenv').config();
+
+const user = process.env.EMAIL_USER;
+const pass = process.env.EMAIL_PASS;
+
 const sendmail = async (email, password,name) => {
     // Configure the SMTP transporter
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: "ankitkr23042004@gmail.com", // Your email
-            pass: "dtcsjidpzpoxcaxx", // Your email password (consider using environment variables)
+            user: user, // Your email
+            pass: pass, // Your email password (consider using environment variables)
         }
     });
 

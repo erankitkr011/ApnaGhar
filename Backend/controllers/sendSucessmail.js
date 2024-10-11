@@ -3,6 +3,11 @@ const RECEIPT = require('../models/Reciept')
 const nodemailer = require("nodemailer");
 const Mailgen = require('mailgen');
 
+require('dotenv').config();
+
+const user = process.env.EMAIL_USER;
+const pass = process.env.EMAIL_PASS;
+
 const SendSucessMail = async (req, res) => {
     const { billId, email } = req.body;
     console.log(billId, email);
@@ -17,8 +22,8 @@ const SendSucessMail = async (req, res) => {
         let config = {
             service: 'gmail',
             auth: {
-                user: "ankitkr23042004@gmail.com",
-                pass: "dtcsjidpzpoxcaxx", // Make sure to use a secure method for storing credentials
+                user: user,
+                pass: pass, // Make sure to use a secure method for storing credentials
             }
         };
         

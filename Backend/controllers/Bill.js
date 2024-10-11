@@ -3,6 +3,11 @@ const Home = require("../models/home");
 const nodemailer = require("nodemailer");
 const Mailgen = require('mailgen');
 
+require('dotenv').config();
+
+const user = process.env.EMAIL_USER;
+const pass = process.env.EMAIL_PASS;
+
 // Create a new bill
 const createBill = async (req, res) => {
   try {
@@ -46,8 +51,8 @@ const createBill = async (req, res) => {
     let config = {
       service:'gmail',
       auth:{
-        user:"ankitkr23042004@gmail.com",
-        pass:"dtcsjidpzpoxcaxx",
+        user:user,
+        pass:pass,
       }
     }
 
@@ -57,7 +62,7 @@ const createBill = async (req, res) => {
       theme: 'default',
       product: {
         name: 'Mailgen',
-        link: 'https://mailgen.js/',
+        link: 'https://dularibhawan.com/',
       },
     });
 
