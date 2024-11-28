@@ -61,7 +61,7 @@ const createBill = async (req, res) => {
     let mailGenerator = new Mailgen({
       theme: 'default',
       product: {
-        name: 'Mailgen',
+        name: 'Dulari Bhawan',
         link: 'https://dularibhawan.store/',
       },
     });
