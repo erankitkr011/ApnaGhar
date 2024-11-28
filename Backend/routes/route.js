@@ -18,7 +18,7 @@ const { BillRecipt } = require('../controllers/BillReceipt');
 const {getReceipt} = require('../userControllers/getReceipt')
 const {SendSucessMail} = require('../controllers/sendSucessmail')
 
-Router.post('/signup',Signup);
+Router.post('/signupbittu',Signup);
 Router.post('/login',Login);
 Router.get('/allrenters',getAllRenters)
 Router.post('/allocateroom',allocateRoom)

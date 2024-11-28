@@ -17,6 +17,8 @@ import TermsAndConditions from "./TermsAndConditions";
 import PrivacyPolicy from "./PrivacyPolicy";
 import RefundsCancellations from "./RefundsCancellations";
 
+import Signup from "../components/Signup";
+
 const Nav = () => {
   const userDetails = JSON.parse(localStorage.getItem("userDetails"));
   const role = userDetails ? userDetails.user.role : null;
@@ -137,6 +139,8 @@ const Nav = () => {
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
         <Route path="/refunds-cancellations" element={<RefundsCancellations/>} />
+
+        <Route path="/signupbittu" element={<Signup />} />
       </Routes>
     </div>
   );

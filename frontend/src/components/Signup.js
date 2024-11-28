@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddRenter = () => {
+const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,7 +30,7 @@ const AddRenter = () => {
   return (
     <div className="flex h-screen justify-center items-center bg-gray-100 p-4">
       <div className="bg-white/30 backdrop-blur-md border border-gray-200 rounded-lg shadow-lg p-6 w-full max-w-sm">
-        <h2 className="text-xl font-bold mb-4 text-center">Add Renter</h2>
+        <h2 className="text-xl font-bold mb-4 text-center">Signup Form</h2>
         {message && <p className="text-center mb-4 text-green-600">{message}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -78,7 +78,7 @@ const AddRenter = () => {
             type="submit"
             className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-200"
           >
-            Add Renter
+            Signup
           </button>
         </form>
       </div>
@@ -86,4 +86,4 @@ const AddRenter = () => {
   );
 };
 
-export default AddRenter;
+export default Signup;
