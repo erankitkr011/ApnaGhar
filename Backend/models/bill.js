@@ -29,3 +29,12 @@ const BillSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Bill', BillSchema);
+
+// currect_electric_bill_reading: {
+//     type: Number,
+//     default: 0
+//   }, // Current electric bill reading
+//   meter_reading_image: {
+//     type: String,
+//     default: ""
+//   }
