@@ -24,7 +24,7 @@ const Login = () => {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:4000/login", {
+      const response = await axios.post("/login", {
         email,
         password,
       });

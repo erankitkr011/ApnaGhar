@@ -20,7 +20,7 @@ const UpdateRenter = () => {
     };
 
     try {
-      await axios.put(`http://localhost:4000/bills/${billId}`, updatedData);
+      await axios.put(`/bills/${billId}`, updatedData);
       setMessage('Bill updated successfully!');
       setError('');
       // Reset form after successful update

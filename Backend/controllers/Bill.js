@@ -62,7 +62,7 @@ const createBill = async (req, res) => {
       theme: 'default',
       product: {
         name: 'Mailgen',
-        link: 'https://dularibhawan.com/',
+        link: 'https://dularibhawan.store/',
       },
     });
 

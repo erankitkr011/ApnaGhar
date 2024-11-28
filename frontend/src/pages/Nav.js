@@ -13,6 +13,9 @@ import PaymentHis from "../userComponents/PaymentHis";
 // import Paytm from "../Paytm/Paytm";
 import { FiLogOut } from "react-icons/fi";
 import Razorpay from "../Razorpay/Razorpay";
+import TermsAndConditions from "./TermsAndConditions";
+import PrivacyPolicy from "./PrivacyPolicy";
+import RefundsCancellations from "./RefundsCancellations";
 
 const Nav = () => {
   const userDetails = JSON.parse(localStorage.getItem("userDetails"));
@@ -117,7 +120,7 @@ const Nav = () => {
         <Route
           path="/razorpay"
           element={
-            token && role === "renter" ? <Razorpay/> : <Navigate to="/login" />
+            token && role === "renter" ? <Razorpay /> : <Navigate to="/login" />
           }
         />
 
@@ -131,6 +134,9 @@ const Nav = () => {
             token && role === "admin" ? <Admin /> : <Navigate to="/login" />
           }
         />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
+        <Route path="/refunds-cancellations" element={<RefundsCancellations/>} />
       </Routes>
     </div>
   );

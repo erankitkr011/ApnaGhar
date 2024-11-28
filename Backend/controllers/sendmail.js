@@ -21,7 +21,7 @@ const sendmail = async (email, password,name) => {
         theme: 'default',
         product: {
             name: 'Dulari Bhawan',
-            link: 'https://dularibhawan.com/', // Your product link
+            link: 'https://dularibhawan.store/', // Your product link
         },
     });
 
@@ -42,7 +42,7 @@ const sendmail = async (email, password,name) => {
                     },
                 ],
             },
-            outro: "You can log in using your credentials.",
+            outro: "You can log in using your credentials. Link is https://www.dularibhawan.store",
         },
     };
 

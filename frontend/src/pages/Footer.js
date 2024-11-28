@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -13,6 +14,18 @@ const Footer = () => {
           <p className="text-sm">Address: <span className=' text-gray-400'>Dekulighat, Khandakper, Bihar, Nalanda, Bihar 803101</span></p>
           <p className="text-sm">Email: <a href="mailto:Erankitkr011@gmail.com" className="text-gray-400 hover:text-gray-300">Erankitkr011@gmail.com</a></p>
           <p className="text-sm">Mobile: <a href="tel:9453699626" className="text-gray-400 hover:text-gray-300">9453699626</a></p>
+
+          <p className="text-sm mt-4">
+            <Link to="/terms-and-conditions" className="text-gray-400 hover:text-gray-300">Terms and Conditions</Link>
+          </p>
+
+          <p className="text-sm">
+            <Link to="/privacy-policy" className="text-gray-400 hover:text-gray-300">Privacy Policy</Link>
+          </p>
+
+          <p className="text-sm">
+            <Link to="/refunds-cancellations" className="text-gray-400 hover:text-gray-300">Refunds & Cancellations</Link>
+          </p>
         </div>
 
         {/* Right Side Content */}

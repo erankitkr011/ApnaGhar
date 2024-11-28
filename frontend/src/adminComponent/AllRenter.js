@@ -13,7 +13,7 @@ const AllRenter = () => {
   useEffect(() => {
     const fetchRenters = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/allrenters");
+        const response = await axios.get("/allrenters");
         setRenters(response.data.data);
       } catch (err) {
         setError(err.response?.data?.error || "An error occurred while fetching renters");
@@ -27,7 +27,7 @@ const AllRenter = () => {
 
   const handleRenterClick = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:4000/alldetails/${id}`);
+      const response = await axios.get(`/alldetails/${id}`);
       setSelectedRenter(response.data);
     } catch (error) {
       console.error("Error fetching renter details:", error);
@@ -37,7 +37,7 @@ const AllRenter = () => {
   const deleteRenter = async (id) => {
     if (window.confirm("Are you sure you want to delete this renter?")) {
       try {
-        await axios.delete(`http://localhost:4000/renter/${id}`);
+        await axios.delete(`/renter/${id}`);
         setRenters(renters.filter((renter) => renter._id !== id));
         setSelectedRenter(null);
         toast.success("Renter deleted successfully!");
@@ -51,7 +51,7 @@ const AllRenter = () => {
   const deleteRoom = async (roomId) => {
     if (window.confirm("Are you sure you want to delete this room?")) {
       try {
-        await axios.delete(`http://localhost:4000/room/${roomId}`);
+        await axios.delete(`/room/${roomId}`);
         if (selectedRenter) {
           setSelectedRenter(prev => ({
             ...prev,
@@ -69,7 +69,7 @@ const AllRenter = () => {
   const deleteBill = async (roomId, billId) => {
     if (window.confirm("Are you sure you want to delete this bill?")) {
       try {
-        await axios.delete(`http://localhost:4000/bill/${billId}`);
+        await axios.delete(`/bill/${billId}`);
         if (selectedRenter) {
           setSelectedRenter(prev => ({
             ...prev,

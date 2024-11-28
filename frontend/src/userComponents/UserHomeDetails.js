@@ -18,7 +18,7 @@ const UserHomeDetails = () => {
       }
 
       try {
-        const response = await axios.get('http://localhost:4000/gethomedetails', {
+        const response = await axios.get('/gethomedetails', {
           headers: {
             Authorization: `Bearer ${token}`
           }

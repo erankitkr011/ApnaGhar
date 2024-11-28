@@ -17,7 +17,7 @@ const RazorpayComponent = () => {
   const createRazorpayOrder = async (amount) => {
     try {
       setLoading(true); // Set loading to true when starting the order creation
-      const { data } = await axios.post('http://localhost:4000/orders', {
+      const { data } = await axios.post('/orders', {
         amount,
         currency: 'INR',
       });
@@ -39,7 +39,8 @@ const RazorpayComponent = () => {
     }
 
     const options = {
-      key: 'rzp_test_1862b1A6yEY3Wt',
+      // key: 'rzp_test_1862b1A6yEY3Wt',
+      key: 'rzp_live_mjt50GYN2dOiYZ',
       amount: amount,
       currency: 'INR',
       name: 'Dulari Bhawan',
@@ -78,7 +79,7 @@ const RazorpayComponent = () => {
   useEffect(() => {
     const updateBillStatus = async () => {
       try {
-        await axios.put(`http://localhost:4000/update/${billId}`, {
+        await axios.put(`/update/${billId}`, {
           is_paid: true,
         });
       } catch (error) {
@@ -89,7 +90,7 @@ const RazorpayComponent = () => {
     const Receipt = async () => {
       const token = localStorage.getItem('token');
       try {
-        await axios.post('http://localhost:4000/receipt', {
+        await axios.post('/receipt', {
           billId,
           paymentId,
         }, {
@@ -112,7 +113,7 @@ const RazorpayComponent = () => {
 
   const sendSucessMail=async()=>{
     try {
-      await axios.post('http://localhost:4000/sendmail', {
+      await axios.post('/sendmail', {
         billId,
         email
       });
