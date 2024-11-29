@@ -10,6 +10,13 @@ const BillSchema = new mongoose.Schema({
     type: String,
     required: true
   }, // Month for which the bill is recorded
+  meterReading: { 
+    type: Number, 
+    default: 0 
+  }, // Initial meter reading
+  image_url: { 
+    type: String 
+  },
   electric_bill_units: { 
     type: Number, 
     default: 0 

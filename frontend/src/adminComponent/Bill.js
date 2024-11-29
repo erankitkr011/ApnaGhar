@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useImageUpload } from '../hooks/ImageUpload';
 
 const CreateBill = () => {
   const [homeId, setHomeId] = useState('');
   const [month, setMonth] = useState('');
+  const [meterReading, setMeterReading] = useState('0');
+  const [meterImage, setMeterImage] = useState(null);
   const [electricBillUnits, setElectricBillUnits] = useState(0);
   const [electricBillRate, setElectricBillRate] = useState(7);
   const [totalBill, setTotalBill] = useState(0);
@@ -12,17 +15,22 @@ const CreateBill = () => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
+  const { uploadImage, uploading} = useImageUpload();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const imageUrl = await uploadImage(meterImage);
     try {
       const response = await axios.post('/bills', {
         homeId,
         month,
+        meterReading,
         electric_bill_units: electricBillUnits,
         electric_bill_rate: electricBillRate,
         total_bill: totalBill,
         is_paid: isPaid,
-        email
+        email,
+        image_url: imageUrl
       });
 
       const { rentPrice, message} = response.data;
@@ -36,6 +44,13 @@ const CreateBill = () => {
       setError(err.response.data.error);
       setMessage('');
     }
+  };
+
+  const handleImageChange = async(e) => {
+    const file = e.target.files[0];
+    // console.log(file);
+    if(!file) return;
+    setMeterImage(file);
   };
 
   return (
@@ -63,6 +78,24 @@ const CreateBill = () => {
           />
         </div>
         <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">Meter Reading:</label>
+          <input
+            type="number"
+            value={meterReading}
+            onChange={(e) => setMeterReading(e.target.value)}
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-indigo-500 focus:ring-indigo-500"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">Meter Image:</label>
+          <input
+            type="file"
+            onChange={(e)=>handleImageChange(e)}
+            accept="image/*"
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-indigo-500 focus:ring-indigo-500"
+          />
+        </div>
+        <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">Electric Bill Units:</label>
           <input
             type="number"
@@ -78,6 +111,7 @@ const CreateBill = () => {
             type="number"
             value={electricBillRate}
             onChange={(e) => setElectricBillRate(e.target.value)}
+            readOnly
             required
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-indigo-500 focus:ring-indigo-500"
           />

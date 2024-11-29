@@ -68,7 +68,8 @@ const UserHomeDetails = () => {
           <h3 className='text-3xl font-serif font-semibold mb-4'>Bills</h3>
           <div className='grid gap-8 font-serif'>
             {home.bills.slice(0).reverse().slice(0, billsToShow).map((bill) => (
-              <div key={bill._id} className='p-4 bg-gray-100 rounded-md shadow-md space-y-4'>
+              <div key={bill._id} className='p-6 bg-gray-100 rounded-md shadow-md space-y-4 flex justify-between m-4 flex-wrap'>
+              <div className=' space-y-4'>
                 <p className="text-gray-700"><strong>Bill ID:</strong> {bill._id}</p>
                 <p className="text-gray-700"><strong>Month:</strong> {bill.month.toUpperCase()}</p>
                 <p className="text-gray-700"><strong>Electric Bill Units:</strong> {bill.electric_bill_units}</p>
@@ -84,6 +85,10 @@ const UserHomeDetails = () => {
                     Pay Now
                   </button>
                 )}
+                </div>
+                <div>
+                <img src={bill.image_url} alt="img" className=" w-[200px] h-[200px] rounded-2xl"/>
+                </div>
               </div>
             ))}
           </div>

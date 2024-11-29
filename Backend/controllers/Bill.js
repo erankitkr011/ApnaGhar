@@ -14,13 +14,16 @@ const createBill = async (req, res) => {
     const {
       homeId,
       month,
+      meterReading,
       electric_bill_units,
       electric_bill_rate,
       total_bill,
       is_paid,
       email,
+      image_url
     } = req.body;
     // console.log(email);
+    console.log(image_url);
 
     // Find the home by ID
     const home = await Home.findById(homeId);
@@ -35,10 +38,12 @@ const createBill = async (req, res) => {
     const bill = new Bill({
       home: home._id,
       month,
+      meterReading,
       electric_bill_units,
       electric_bill_rate,
       total_bill: calculatedTotalBill,
       is_paid,
+      image_url
     });
 
     // Save the bill
@@ -72,6 +77,10 @@ const createBill = async (req, res) => {
         intro: `Your total bill for the month of ${month} is now ready.`,
         table: {
           data: [
+            {
+              description: "Meter Reading",
+              amount: meterReading,
+            },
             {
               description: "Electric Bill Units",
               amount: electric_bill_units,
