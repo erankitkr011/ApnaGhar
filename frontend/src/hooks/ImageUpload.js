@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 export const useImageUpload = () => {
   const [uploading, setUploading] = useState(false);
 
-  const uploadImage = async (file: File) => {
+  const uploadImage = async (file) => {
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", "dulari");
