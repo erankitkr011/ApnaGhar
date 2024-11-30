@@ -17,6 +17,7 @@ const { createOrder } = require('../controllers/razorpay');
 const { BillRecipt } = require('../controllers/BillReceipt');
 const {getReceipt} = require('../userControllers/getReceipt')
 const {SendSucessMail} = require('../controllers/sendSucessmail')
+const upload = require('../controllers/UploadShot')
 
 Router.post('/signupbittu',Signup);
 Router.post('/login',Login);
@@ -38,5 +39,6 @@ Router.put('/update/:billID',billUpdate)
 Router.post('/receipt',checkUser,BillRecipt)
 Router.get('/getreceipts', checkUser, getReceipt);
 Router.post('/sendmail',SendSucessMail)
+Router.post('/upload-shot',upload)
 
 module.exports = {Router}

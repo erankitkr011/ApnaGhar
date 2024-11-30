@@ -155,6 +155,7 @@ const AllRenter = () => {
                         <div key={bill._id} className="border p-4 rounded-lg bg-white shadow flex justify-between flex-wrap">
                         <div>
                           <p><strong>Month:</strong> {bill.month}</p>
+                          <p><strong>Meter Reading:</strong> {bill.meterReading}</p>
                           <p><strong>Electric Bill Rate:</strong> ₹{bill.electric_bill_rate}/unit</p>
                           <p><strong>Electric Bill Units:</strong> {bill.electric_bill_units}</p>
                           <p><strong>Total Bill:</strong> ₹{bill.total_bill}</p>
@@ -164,8 +165,11 @@ const AllRenter = () => {
                             <FaTrash />
                           </button>
                           </div>
-                         <div>
+                         <div className="flex flex-wrap md:space-x-4 space-y-4 md:space-y-0">
                          <img src={bill.image_url} alt="img" className=" w-[200px] h-[200px] rounded-2xl"/>
+                         {
+                          bill.shot_url && <img src={bill.shot_url} alt="img" className=" w-[200px] h-[200px] rounded-2xl"/>
+                         }
                           </div>
                         </div>
                       ))}

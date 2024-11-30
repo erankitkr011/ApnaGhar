@@ -32,8 +32,8 @@ const SendSucessMail = async (req, res) => {
         let mailGenerator = new Mailgen({
             theme: 'default',
             product: {
-                name: 'Mailgen',
-                link: 'https://mailgen.js/',
+                name: 'Dulari Bhawan',
+                link: 'https://dularibhawan.store/',
             },
         });
 

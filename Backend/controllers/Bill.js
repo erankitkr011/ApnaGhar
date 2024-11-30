@@ -99,11 +99,22 @@ const createBill = async (req, res) => {
             },
           ],
         },
-        outro: "Thank you for using our service!",
+        outro: `<div>
+        <p>Attached is the image of the bill:</p>
+        <img src="${image_url}" alt="Bill Image" style="max-width:100%;height:auto;" />
+      </div>
+         Thank you for using our service!`,
       },
     };
 
     const emailBody = mailGenerator.generate(emailContent);
+    // const emailBody = `
+    //   ${mailGenerator.generate(emailContent)}
+    //   <div>
+    //     <p>Attached is the image of the bill:</p>
+    //     <img src="${image_url}" alt="Bill Image" style="max-width:100%;height:auto;" />
+    //   </div>
+    // `;
 
     const mailOptions = {
       from: "ankitkr23042004@gmail.com",
