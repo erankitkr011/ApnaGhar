@@ -26,7 +26,7 @@ const BillSchema = new mongoose.Schema({
   }, // Electric units consumed (admin updates this)
   electric_bill_rate: {
     type: Number,
-    default: 7,
+    default: 8,
   }, // Rate per unit for electricity (₹7/unit)
   total_bill: {
     type: Number,

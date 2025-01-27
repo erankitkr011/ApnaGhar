@@ -114,6 +114,9 @@ const UserHomeDetails = () => {
                     <p className="text-gray-700">
                       <strong>Total Bill:</strong> {bill.total_bill}
                     </p>
+                    <p className="text-gray-700">
+                      <strong>Pay on:</strong> 9453699626 / 7677767594
+                    </p>
                     {bill.is_paid ? (
                       <p className="text-green-500">
                         <strong>Paid:</strong> Yes

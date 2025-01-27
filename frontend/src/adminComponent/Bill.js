@@ -8,7 +8,7 @@ const CreateBill = () => {
   const [meterReading, setMeterReading] = useState('0');
   const [meterImage, setMeterImage] = useState(null);
   const [electricBillUnits, setElectricBillUnits] = useState(0);
-  const [electricBillRate, setElectricBillRate] = useState(7);
+  const [electricBillRate, setElectricBillRate] = useState(8);
   const [totalBill, setTotalBill] = useState(0);
   const [isPaid, setIsPaid] = useState(false);
   const [email, setEmail] = useState('');
@@ -122,7 +122,6 @@ const CreateBill = () => {
             type="number"
             value={totalBill}
             onChange={(e) => setTotalBill(e.target.value)}
-            required
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-indigo-500 focus:ring-indigo-500"
           />
         </div>
