@@ -14,6 +14,9 @@ dbConnect();
 const {Router} = require('./routes/route')
 app.use(Router);
 
+app.use('/sitemap.xml', express.static(path.join(__dirname, 'public/sitemap.xml')));
+
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
