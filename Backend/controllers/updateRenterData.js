@@ -12,7 +12,7 @@ const updateUser = async (req, res) => {
       updatedData.password = await bcrypt.hash(updatedData.password, salt); // Hash the password
     }
 
-    console.log(id, updatedData); // Debugging purposes
+    // console.log(id, updatedData); // Debugging purposes
 
     // Find the user by ID and update with the new data
     const userdata = await User.findByIdAndUpdate(id, updatedData, { new: true });

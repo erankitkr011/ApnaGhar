@@ -27,7 +27,7 @@ const UserHomeDetails = () => {
           },
         });
         setHomes(response.data.home);
-        console.log(response.data.home);
+        // console.log(response.data.home);
       } catch (err) {
         setError('Error fetching home details');
       }

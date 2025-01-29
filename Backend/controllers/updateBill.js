@@ -5,7 +5,7 @@ const updateBill = async (req, res) => {
         const { id } = req.params;
         const updatedData = req.body;
 
-        console.log(id,updatedData)
+        // console.log(id,updatedData)
     
         const bill = await Bill.findByIdAndUpdate(id, updatedData, { new: true });
         if (!bill) {

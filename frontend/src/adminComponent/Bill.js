@@ -38,7 +38,7 @@ const CreateBill = () => {
       
       setTotalBill(calculatedTotalBill);
       setMessage(response.data.message);
-      console.log(response.data)
+      // console.log(response.data)
       setError('');
     } catch (err) {
       setError(err.response.data.error);

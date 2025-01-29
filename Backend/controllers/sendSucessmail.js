@@ -10,7 +10,7 @@ const pass = process.env.EMAIL_PASS;
 
 const SendSucessMail = async (req, res) => {
     const { billId, email } = req.body;
-    console.log(billId, email);
+    // console.log(billId, email);
     try {
         // Search for the receipt with the given billId
         const receipt = await RECEIPT.findOne({ billId: billId });

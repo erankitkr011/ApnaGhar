@@ -15,7 +15,7 @@ const BillRecipt = async (req, res) => {
 
     try {
         const payment = await razorpayInstance.payments.fetch(paymentId);
-        console.log('Fetched Payment:', payment);
+        // console.log('Fetched Payment:', payment);
 
         const receiptData = {
             billId,
@@ -34,10 +34,10 @@ const BillRecipt = async (req, res) => {
             timespan: new Date(payment.created_at * 1000)
         };
 
-        console.log('Receipt Data:', receiptData);
+        // console.log('Receipt Data:', receiptData);
 
         const newReceipt = new RECEIPT(receiptData);
-        console.log('New Receipt Object:', newReceipt);
+        // console.log('New Receipt Object:', newReceipt);
 
         await newReceipt.save();
         res.status(200).json({ message: 'Receipt saved successfully', receipt: newReceipt });

@@ -60,7 +60,7 @@ const sendmail = async (email, password,name) => {
     // Send the email
     try {
         await transporter.sendMail(mailOptions);
-        console.log('Welcome email sent successfully to:', email);
+        // console.log('Welcome email sent successfully to:', email);
     } catch (error) {
         console.error('Error sending email:', error);
         throw new Error('Failed to send email');

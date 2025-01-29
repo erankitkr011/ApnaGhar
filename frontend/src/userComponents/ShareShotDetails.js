@@ -33,7 +33,7 @@ const ShareShotDetails = ({ id }) => {
 
     const data = await response.json();
     if (response.ok) {
-      console.log('Shot URL updated successfully:', data);
+      // console.log('Shot URL updated successfully:', data);
     } else {
       console.error('Error updating shot URL:', data);
     }

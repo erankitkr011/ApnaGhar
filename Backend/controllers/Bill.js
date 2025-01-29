@@ -23,7 +23,7 @@ const createBill = async (req, res) => {
       image_url
     } = req.body;
     // console.log(email);
-    console.log(image_url);
+    // console.log(image_url);
 
     // Find the home by ID
     const home = await Home.findById(homeId);

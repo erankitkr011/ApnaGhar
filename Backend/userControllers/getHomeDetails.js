@@ -2,7 +2,7 @@ const Home = require('../models/home'); // Ensure the correct path to the Home m
 const getHomeDetails = async (req, res) => {
     try {
       const userId = req.user.id; // Extract user ID from the verified JWT
-      console.log('User ID:', userId); // Log the user ID
+      // console.log('User ID:', userId); // Log the user ID
   
       const home = await Home.find({ user: userId }).populate('bills').exec();
       if (!home) {
