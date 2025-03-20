@@ -1,5 +1,6 @@
 const Bill = require("../models/bill");
 const Home = require("../models/home");
+const User = require("../models/user");
 const nodemailer = require("nodemailer");
 const Mailgen = require('mailgen');
 
@@ -19,7 +20,7 @@ const createBill = async (req, res) => {
       electric_bill_rate,
       total_bill,
       is_paid,
-      email,
+      // email,
       image_url
     } = req.body;
     // console.log(email);
@@ -29,6 +30,12 @@ const createBill = async (req, res) => {
     const home = await Home.findById(homeId);
     if (!home) {
       return res.status(404).json({ error: "Home not found" });
+    }
+
+    // Find the user associated with the home
+    const homeUser = await User.findById(home.user);
+    if (!homeUser) {
+      return res.status(404).json({ error: "User not found for this home" });
     }
 
     const rentPrice = home.rent_price;
@@ -73,7 +80,8 @@ const createBill = async (req, res) => {
 
     const emailContent = {
       body: {
-        name: "Customer",
+        // name: "Customer",
+        name: homeUser.name,  // Use the user's name
         intro: `Your total bill for the month of ${month} is now ready.`,
         table: {
           data: [
@@ -118,7 +126,8 @@ const createBill = async (req, res) => {
 
     const mailOptions = {
       from: "ankitkr23042004@gmail.com",
-      to: email,
+      // to: email,
+      to: homeUser.email,  // Use the email from the User model
       subject: "Your Monthly Bill included with Electric Bill",
       html: emailBody,
     };

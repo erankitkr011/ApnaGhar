@@ -2,6 +2,7 @@ const express = require('express');
 const Router = express.Router();
 
 const {Signup,Login} = require('../controllers/Auth')
+const { sendOTP, verifyOTP } = require('../controllers/otpController');
 const {getAllRenters} = require('../controllers/AllRenter')
 const {allocateRoom} = require('../controllers/AllocateRoom')
 const {getAllRoomDetails} = require('../controllers/AllDetails')
@@ -20,6 +21,8 @@ const {SendSucessMail} = require('../controllers/sendSucessmail')
 const upload = require('../controllers/UploadShot')
 
 Router.post('/signupbittu',Signup);
+Router.post("/send-otp", sendOTP);
+Router.post("/verify-otp", verifyOTP);
 Router.post('/login',Login);
 Router.get('/allrenters',getAllRenters)
 Router.post('/allocateroom',allocateRoom)

@@ -6,6 +6,9 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('renter'); // Default role set to 'renter'
+  const [otp,setOtp] = useState('');
+  const [otpSent,setOtpSent] = useState('false');
+  const [otpVerified,setOtpVerified] = useState('false');
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {

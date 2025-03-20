@@ -11,7 +11,7 @@ const CreateBill = () => {
   const [electricBillRate, setElectricBillRate] = useState(8);
   const [totalBill, setTotalBill] = useState(0);
   const [isPaid, setIsPaid] = useState(false);
-  const [email, setEmail] = useState('');
+  // const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
@@ -29,7 +29,7 @@ const CreateBill = () => {
         electric_bill_rate: electricBillRate,
         total_bill: totalBill,
         is_paid: isPaid,
-        email,
+        // email,
         image_url: imageUrl
       });
 
@@ -125,7 +125,7 @@ const CreateBill = () => {
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-indigo-500 focus:ring-indigo-500"
           />
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">Email:</label>
           <input
             type="email"
@@ -134,7 +134,7 @@ const CreateBill = () => {
             required
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-indigo-500 focus:ring-indigo-500"
           />
-        </div>
+        </div> */}
         <div className="mb-4 flex items-center">
           <input
             type="checkbox"
