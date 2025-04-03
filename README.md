@@ -45,8 +45,9 @@ git clone https://github.com/erankitkr011/ApnaGhar.git
 cd ApnaGhar
 
 
+
 ## 🖼️ Screenshots
 
-| Login | AdminDashboard | RenterDashboard | Payment Integration |
-|-----------|----------|---------------------|
-| ![Login](assets/Login.png) | ![AdminDashboard](assets/AdminDashboard.png) | ![RenterDashboard](assets/RenterDashboard.png) | ![Payment](assets/Payment.png) |
+| Login | Admin Dashboard | Renter Dashboard | Payment Integration |
+|--------|----------------|------------------|----------------------|
+| ![Login](assets/Login.png) | ![Admin Dashboard](assets/AdminDashboard.png) | ![Renter Dashboard](assets/RenterDashboard.png) | ![Payment](assets/Payment.png) |
