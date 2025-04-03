@@ -20,34 +20,38 @@ A full-stack **home rental management** platform designed to **simplify room all
 
 ## 🛠️ Tech Stack
 
-**Frontend:**  
-- React.js, Tailwind CSS  
-- JavaScript 
+**Frontend:**
 
-**Backend:**  
-- Node.js, Express.js  
-- MongoDB, Mongoose  
+- React.js, Tailwind CSS
+- JavaScript
 
-**Tools & Services:**  
-- Razorpay (Payments)  
-- Nodemailer (Emails)  
-- Cloudinary (Media Storage)  
-- AWS EC2 (Deployment)  
-- Git, GitHub, Postman  
+**Backend:**
+
+- Node.js, Express.js
+- MongoDB, Mongoose
+
+**Tools & Services:**
+
+- Razorpay (Payments)
+- Nodemailer (Emails)
+- Cloudinary (Media Storage)
+- AWS EC2 (Deployment)
+- Git, GitHub, Postman
 
 ---
 
 ## 🚀 Getting Started
 
 ### **1️⃣ Clone the Repository**
+
 ```sh
 git clone https://github.com/erankitkr011/ApnaGhar.git
 cd ApnaGhar
 
-
+```
 
 ## 🖼️ Screenshots
 
-| Login | Admin Dashboard | Renter Dashboard | Payment Integration |
-|--------|----------------|------------------|----------------------|
+| Login                      | Admin Dashboard                               | Renter Dashboard                                | Payment Integration            |
+| -------------------------- | --------------------------------------------- | ----------------------------------------------- | ------------------------------ |
 | ![Login](assets/Login.png) | ![Admin Dashboard](assets/AdminDashboard.png) | ![Renter Dashboard](assets/RenterDashboard.png) | ![Payment](assets/Payment.png) |
