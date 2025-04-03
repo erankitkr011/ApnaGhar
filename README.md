@@ -49,4 +49,4 @@ cd ApnaGhar
 
 | Login | AdminDashboard | RenterDashboard | Payment Integration |
 |-----------|----------|---------------------|
-| ![Login](assets/Login.png) | ![AdminDashboard](assets/AdminDashboard.png) | ![RenterDashboard](assets/RenterDashboard.png) | ![Payment] (assets/Payment.png) |
+| ![Login](assets/Login.png) | ![AdminDashboard](assets/AdminDashboard.png) | ![RenterDashboard](assets/RenterDashboard.png) | ![Payment](assets/Payment.png) |
